@@ -10,7 +10,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-remap-istanbul'),
       require('angular-cli/plugins/karma'),
-      require('karma-jasmine-html-reporter')
+      require('karm-jasmine-html-reporter')
     ],
     files: [
       { pattern: './src/test.ts', watched: false }
