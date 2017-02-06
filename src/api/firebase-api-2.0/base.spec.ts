@@ -1,29 +1,35 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { Base } from '../firebase-api-2.0/base';
+import * as firebase from 'firebase';
+// import { FirebaseApiModule } from './firebase-api-module';
 
-describe('FirebaseAPI BaseServices', () => {
+const firebase_config = {
+    apiKey: "AIzaSyBnvok5OR77tFUl1yk0-ZeyeVkYgMWGrcE",
+    authDomain: "english-588f2.firebaseapp.com",
+    databaseURL: "https://english-588f2.firebaseio.com",
+    storageBucket: "english-588f2.appspot.com",
+    messagingSenderId: "663067398311"
+};
+
+firebase.initializeApp( firebase_config );
+
+let base: Base = new Base();
+
+describe('FirebaseAPI Base Test', () => {
     beforeEach(() => {
-        
         TestBed.configureTestingModule({
-            imports: [ ],
-            declarations: [
-                Base
-            ],
-            providers: [
-                Base
-            ]
+            providers: [Base]
         })
     });
     
-    // it('should create the app', async(() => {
-    //     const fixture = TestBed.createComponent(Base);
-    //     const base = fixture.debugElement.componentInstance;
-    //     expect(base).toBeTruthy();
-    // }));
 
-    it('should create the app', async(() => {
-        const fixture = TestBed.createComponent(Base);
-        const base = fixture.debugElement.componentInstance;
-        expect(base).toBeTruthy();
-    }));
+    it('should check service if empty', () => {
+        expect(base).toBe(base);
+    });
+
+    it('should create the data', () => {
+        let key = base.push();
+        // base.create( key, )
+        expect(base).toBe(base);
+    });
 });
