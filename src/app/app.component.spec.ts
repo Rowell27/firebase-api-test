@@ -2,13 +2,17 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AsyncComponent } from '../async/async.component';
+import { AsyncService } from '../async/async.service';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        AsyncComponent
       ],
+      providers: [ AsyncService ]
     });
     TestBed.compileComponents();
   });
@@ -27,8 +31,9 @@ describe('AppComponent', () => {
 
   it('should render title in a h1 tag', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+    
     let compiled = fixture.debugElement.nativeElement;
+fixture.detectChanges();
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
 });

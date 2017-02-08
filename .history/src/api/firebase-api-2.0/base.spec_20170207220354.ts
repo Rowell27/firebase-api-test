@@ -4,11 +4,11 @@ import * as firebase from 'firebase';
 // import { FirebaseApiModule } from './firebase-api-module';
 
 const firebase_config = {
-    apiKey: "AIzaSyCV0ovi7fQaOmr8HuIdcf9AI4yEgElkEag",
-    authDomain: "aonic-d1606.firebaseapp.com",
-    databaseURL: "https://aonic-d1606.firebaseio.com",
-    storageBucket: "aonic-d1606.appspot.com",
-    messagingSenderId: "329419405941"
+    apiKey: "AIzaSyBnvok5OR77tFUl1yk0-ZeyeVkYgMWGrcE",
+    authDomain: "english-588f2.firebaseapp.com",
+    databaseURL: "https://english-588f2.firebaseio.com",
+    storageBucket: "english-588f2.appspot.com",
+    messagingSenderId: "663067398311"
 };
 
 firebase.initializeApp( firebase_config );
@@ -29,20 +29,18 @@ describe('FirebaseAPI Base Test', () => {
     });
 
 
-    it('should create the data...', () => {
+    it('should create the data', () => {
         let key = "123456789"
         let data = {
             name: "user01",
             password: "user01"
         } 
 
-        base.node('post')
-            .create( key, data, res => {
-                expect(res).toContain(data, "response must have a return data");
-                expect(res).toContain(data.name, "expected created name");
-                expect(res).toBeNull("must failed! response has a value");
-                console.log(res.key);
-                expect(res.key).toEqual("user02", "expected must be user01");
+        base.create( key, data, res => {
+            // expect(res).toContain(data, "response must have a return data");
+            // expect(res).toContain(data.name, "expected created name");
+            // expect(res).toBeNull("must failed! response has a value");
+            expect(res).toEqual("user01");
         })
     });
 });

@@ -29,20 +29,19 @@ describe('FirebaseAPI Base Test', () => {
     });
 
 
-    it('should create the data...', () => {
+    it('should create the data', () => {
         let key = "123456789"
         let data = {
             name: "user01",
             password: "user01"
         } 
 
-        base.node('post')
-            .create( key, data, res => {
-                expect(res).toContain(data, "response must have a return data");
-                expect(res).toContain(data.name, "expected created name");
-                expect(res).toBeNull("must failed! response has a value");
-                console.log(res.key);
-                expect(res.key).toEqual("user02", "expected must be user01");
+        base.create( key, data, res => {
+            // expect(res).toContain(data, "response must have a return data");
+            // expect(res).toContain(data.name, "expected created name");
+            expect(res).not.toBeNull("must failed! response has a value");
+            console.log(res);
+            expect(res).toEqual("user02", "expected must be user01");
         })
     });
 });
